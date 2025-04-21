@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StyleYourStyle - Fashion & Style Blog</title>
+  <style>
+    :root {
+      --cream: #FAF6F1;
+      --pastel-green: #D4E6D4;
+      --pastel-blue: #D4E1E6;
+      --text-color: #333333;
+      --accent-color: #E6C7C2;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--cream);
+      margin: 0;
+      padding: 0;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.95);
+      z-index: 1000;
+      padding: 1rem 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: var(--pastel-green);
+    }
+
+    .hero {
+      width: 100%;
+      height: 80vh;
+      position: relative;
+      overflow: hidden;
+      margin-top: 60px;
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                  url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1920&q=80') center/cover no-repeat;
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      padding: 3rem;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 800px;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+    }
+
+    .blog-post {
+      background-color: white;
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .blog-post:hover {
+      transform: translateY(-5px);
+    }
+
+    .blog-post img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin: 1rem 0;
+    }
+
+    .blog-post:nth-child(1) img {  /* For Travel Fashion image */
+      height: 600px;
+      object-position: center 150px;
+    }
+
+    .blog-post:nth-child(2) img {  /* For Simple Fashion image */
+      object-position: center 40%;
+    }
+
+    .blog-post h2 {
+      color: var(--text-color);
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    .blog-post p {
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+
+    .blog-meta {
+      display: flex;
+      gap: 1rem;
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-widget {
+      background-color: white;
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar-widget h3 {
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--pastel-green);
+    }
+
+    .popular-posts {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .popular-post {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .popular-post img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .categories {
+      list-style: none;
+      padding: 0;
+    }
+
+    .categories li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .categories li:last-child {
+      border-bottom: none;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .newsletter-form input {
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .btn {
+      background-color: var(--pastel-green);
+      color: var(--text-color);
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--pastel-blue);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: var(--text-color);
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    footer {
+      background-color: var(--pastel-blue);
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .blog-content {
+      max-height: 300px;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+
+    .blog-content.expanded {
+      max-height: 2000px;
+    }
+
+    .read-more {
+      background-color: var(--pastel-green);
+      color: var(--text-color);
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .read-more:hover {
+      background-color: var(--pastel-blue);
+    }
+
+    .sidebar-widget img.profile-photo {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <nav>
+    <a href="#" class="active">Home</a>
+    <a href="#">Trends</a>
+    <a href="#">Style Tips</a>
+    <a href="#">Sustainability</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <div class="hero">
+    <img src="Image.png" alt="Fashion Blog Header">
+    <div class="hero-text">
+      <h1>StyleYourStyle</h1>
+      <p>Where Style Meets Sustainability</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <main class="main-content">
+      <article class="blog-post">
+        <h2>Travel Fashion: Style on the Go</h2>
+        <div class="blog-meta">
+          <span><i class="far fa-calendar"></i> April 15, 2024</span>
+          <span><i class="far fa-user"></i> By Nithya Eluri</span>
+          <span><i class="far fa-folder"></i> Travel Fashion</span>
+        </div>
+        <img src="image copy.png" alt="Travel Fashion">
+        <div class="blog-content">
+          <p>Discover the art of traveling in style without compromising on comfort. From versatile pieces that can be mixed and matched to accessories that elevate any outfit, learn how to curate the perfect travel wardrobe that keeps you looking chic wherever your adventures take you.</p>
+          
+          <h3>Essential Travel Fashion Tips</h3>
+          <p>When it comes to travel fashion, the key is finding the perfect balance between comfort and style. Here's my comprehensive guide to building the ultimate travel wardrobe:</p>
+          
+          <h4>1. The Foundation Pieces</h4>
+          <ul>
+            <li>A versatile blazer that can dress up any outfit</li>
+            <li>Comfortable yet stylish walking shoes</li>
+            <li>Wrinkle-resistant fabrics for easy packing</li>
+            <li>Accessories that can transform basic looks</li>
+          </ul>
+
+          <h4>2. Color Coordination</h4>
+          <p>Choose a core color palette that allows you to mix and match effortlessly. I recommend:</p>
+          <ul>
+            <li>Neutral bases: black, navy, white, and beige</li>
+            <li>Accent colors: choose 2-3 complementary colors</li>
+            <li>Patterns that incorporate your chosen colors</li>
+          </ul>
+
+          <h4>3. Packing Strategies</h4>
+          <p>Smart packing is essential for maintaining your travel style. Here are my tried-and-tested tips:</p>
+          <ul>
+            <li>Roll clothes to prevent wrinkles</li>
+            <li>Use packing cubes for organization</li>
+            <li>Plan outfits ahead of time</li>
+            <li>Include versatile pieces that can be dressed up or down</li>
+          </ul>
+        </div>
+        <button class="read-more">Read More</button>
+      </article>
+
+      <article class="blog-post">
+        <h2>Minimalist Fashion: Less is More</h2>
+        <div class="blog-meta">
+          <span><i class="far fa-calendar"></i> April 12, 2024</span>
+          <span><i class="far fa-user"></i> By Emma Minimal</span>
+          <span><i class="far fa-folder"></i> Style Tips</span>
+        </div>
+        <img src="image copy 2.png" alt="Simple Fashion">
+        <p>Embrace the beauty of simplicity with our guide to minimalist fashion. We'll show you how to build a capsule wardrobe that's both timeless and versatile, proving that sometimes the most impactful statements come from the simplest choices.</p>
+        <p>Building your minimalist wardrobe:</p>
+        <ul>
+          <li>Focus on quality over quantity</li>
+          <li>Choose neutral colors as your base</li>
+          <li>Invest in timeless pieces</li>
+          <li>Master the art of layering</li>
+        </ul>
+        <a href="#" class="btn">Read More</a>
+      </article>
+    </main>
+
+    <aside class="sidebar">
+      <div class="sidebar-widget">
+        <h3>About Me</h3>
+        <img src="headshot.png" alt="Nithya Eluri" class="profile-photo">
+        <p>Hi! I'm Nithya Eluri, a fashion enthusiast and style blogger passionate about creating the perfect blend of comfort and elegance. Through this blog, I share my journey in discovering sustainable fashion choices while helping others find their unique style identity.</p>
+      </div>
+
+      <div class="sidebar-widget">
+        <h3>Popular Posts</h3>
+        <div class="popular-posts">
+          <div class="popular-post">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=80&h=80&fit=crop" alt="Sustainable Fashion">
+            <div>
+              <h4>Sustainable Fashion Guide</h4>
+              <span>April 10, 2024</span>
+            </div>
+          </div>
+          <div class="popular-post">
+            <img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?w=80&h=80&fit=crop" alt="Spring Essentials">
+            <div>
+              <h4>Spring 2024 Essentials</h4>
+              <span>April 5, 2024</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-widget">
+        <h3>Categories</h3>
+        <ul class="categories">
+          <li>Style Tips (15)</li>
+          <li>Travel Fashion (8)</li>
+          <li>Sustainable Fashion (12)</li>
+          <li>Seasonal Trends (20)</li>
+          <li>Accessories (6)</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-widget">
+        <h3>Newsletter</h3>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address">
+          <button type="submit" class="btn">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="sidebar-widget">
+        <h3>Follow Me</h3>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h3>About StyleYourStyle</h3>
+        <p>A personal fashion blog by Nithya Eluri dedicated to helping you discover your unique style while staying mindful of sustainability.</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p>Email: hello@styleyourstyle.com</p>
+        <p>Follow us on social media</p>
+      </div>
+    </div>
+    <p>&copy; 2024 StyleYourStyle by Nithya Eluri. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Enhanced scroll animation for blog posts
+    document.addEventListener('DOMContentLoaded', function() {
+      const blogPosts = document.querySelectorAll('.blog-post');
+      const sidebar = document.querySelector('.sidebar');
+      
+      function checkScroll() {
+        blogPosts.forEach(post => {
+          const rect = post.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight - 100;
+          
+          if (isVisible) {
+            post.style.opacity = '1';
+            post.style.transform = 'translateY(0)';
+          }
+        });
+      }
+
+      // Initial styles
+      blogPosts.forEach(post => {
+        post.style.opacity = '0';
+        post.style.transform = 'translateY(50px)';
+        post.style.transition = 'all 0.8s ease';
+      });
+
+      // Smooth scroll for navigation links
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          if (href !== '#') {
+            document.querySelector(href).scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Newsletter form handling
+      const newsletterForm = document.querySelector('.newsletter-form');
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        if (email) {
+          alert('Thank you for subscribing!');
+          this.reset();
+        }
+      });
+
+      // Check on scroll
+      window.addEventListener('scroll', checkScroll);
+      // Initial check
+      checkScroll();
+    });
+
+    document.querySelectorAll('.read-more').forEach(button => {
+      button.addEventListener('click', function() {
+        const content = this.previousElementSibling;
+        content.classList.toggle('expanded');
+        this.textContent = content.classList.contains('expanded') ? 'Show Less' : 'Read More';
+      });
+    });
+  </script>
+</body>
+</html>
